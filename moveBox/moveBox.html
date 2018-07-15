@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        #box{
+            height: 500px;
+            width:  500px;
+            overflow: hidden;
+            position: relative;
+            margin: 50px auto;
+            /*margin-left: 200px;*/
+        }
+        table{
+            /*margin: 20px auto;*/
+            background-color: #4eff30;
+            height: 500px;
+            width: 500px;
+            border-collapse: collapse;
+            position: absolute;
+        }
+        table tr td {
+            /*border: 1px solid black;*/
+        }
+        #div1{
+            height: 10px;
+            width: 10px;
+            background-color: #ff7e8e;
+            position: relative;
+            top: -500px;
+        }
+        #div2{
+            height: 100px;
+            width: 100px;
+            background-color: #ff7e8e;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var myDiv = document.getElementById("div1");
+            myDiv.style.left = "0px";
+            myDiv.style.top = "0px";
+            var myDivH = myDiv.offsetHeight;
+            var timer,
+                timer1,
+                timer2,
+                timer3,
+                timer4;
+            //初始位置设置
+            myDiv.style.left = parseInt(Math.random()*10) * 40 +"px";
+            myDiv.style.top = parseInt(Math.random() * 10) * 40 +"px";
+            //初始方向设置
+            var ranNum = randomNum(37,40);
+            move(ranNum);
+
+            //document的方向变更
+            document.onkeydown = function(ev){
+                var ev = ev || event;
+                switch (ev.keyCode){
+                    case 37:
+                        if(parseInt(myDiv.style.left)>0){
+                            myDiv.style.left = parseInt(myDiv.style.left) - myDivH + "px";
+                            move(37);
+                        }
+                        break;
+                    case 38:
+                        if(parseInt(myDiv.style.top)>0){
+                            myDiv.style.top = parseInt(myDiv.style.top) - myDivH + "px";
+                            move(38);
+                        }
+                        break;
+                    case 39:
+                        if(parseInt(myDiv.style.left)<=490){
+                            myDiv.style.left = parseInt(myDiv.style.left) + myDivH + "px";
+                            move(39);
+                        }
+                        break;
+                    case 40:
+                        if( parseInt(myDiv.style.top)<=490){
+                            myDiv.style.top = parseInt(myDiv.style.top) + myDivH + "px";
+                            move(40);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            };
+
+            //判断是否出界
+            timer = setInterval(function(){
+                if(parseInt(myDiv.style.left)<0 || parseInt(myDiv.style.left)>490){
+                    reloadFun();
+                }
+                if(parseInt(myDiv.style.top)<0 || parseInt(myDiv.style.top)>490){
+                    reloadFun();
+                }
+            },200);
+
+            //刷新网页
+            function reloadFun(){
+                if(confirm("你输了，再来一局?")){
+                    clearInterval(timer1);
+                    clearInterval(timer2);
+                    clearInterval(timer3);
+                    clearInterval(timer4);
+                    location.reload();
+                } else {
+
+                    location.reload();
+                }
+            }
+
+            //move()函数 移动
+            function move(num){
+                clearInterval(timer1);
+                clearInterval(timer2);
+                clearInterval(timer3);
+                clearInterval(timer4);
+                if(num == 37 && parseInt(myDiv.style.left)>0){
+                    timer1 = setInterval(function(){
+                        myDiv.style.left = parseInt(myDiv.style.left) - myDivH + "px";
+                    },500)
+                }
+                if(num == 38 && parseInt(myDiv.style.left)>0){
+                    timer2 = setInterval(function(){
+                        myDiv.style.top = parseInt(myDiv.style.top) - myDivH + "px";
+                    },500)
+                }
+                if(num == 39 && parseInt(myDiv.style.left)<490){
+                    timer3 = setInterval(function(){
+                        myDiv.style.left = parseInt(myDiv.style.left) + myDivH + "px";
+                    },500)
+                }
+                if(num == 40 && parseInt(myDiv.style.left)<490){
+                    timer4 = setInterval(function(){
+                        myDiv.style.top = parseInt(myDiv.style.top) + myDivH + "px";
+                    },500)
+                }
+            }
+            //生成从minNum到maxNum的随机数
+            function randomNum(minNum,maxNum){
+                switch(arguments.length){
+                    case 1:
+                        return parseInt(Math.random()*minNum+1,10);
+                        break;
+                    case 2:
+                        return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+                        break;
+                    default:
+                        return 0;
+                        break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <div id="div1"></div>
+</div>
+</body>
+</html>

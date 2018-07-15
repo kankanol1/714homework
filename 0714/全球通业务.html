@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/data.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        body{
+            background-color: white;
+        }
+
+        .clearfix:after{
+            content: ".";
+            visibility: hidden;
+            height: 0;
+            display: block;
+            clear: both;
+        }
+        .clearfix:after{
+            *zoom: 1;
+        }
+/******************** cssReset ************************************************/
+        #out-box{
+            position: relative;
+            margin: 10px auto;
+            width: 1000px;
+            height: 689px;
+            background: url("img/bg1.png") no-repeat;
+        }
+
+        #in-box{
+            box-sizing: border-box;
+            position: relative;
+            height: 360px;
+            width: 760px;
+            margin: 165px 120px;
+            background: url("img/bg1.jpg") no-repeat;
+            float: left;
+            padding: 30px 50px 30px 50px;
+            overflow: hidden;
+          }
+        #in-box .hr1{
+            border: 2px solid #e7788d;
+        }
+        #in-box .serve{
+            line-height: 25px;
+            height: 25px;
+            position: relative;
+            font-size: 17px;
+            color:  #e7788d;
+            margin-top: 12px;
+            margin-bottom: 17px;
+        }
+        #in-box .serve img,
+        #in-box .serve p{
+            float: left;
+            margin-right: 10px;
+        }
+        .info{
+            height: 125px;
+            width: 100%;
+            /*border: 1px solid black;*/
+            position: relative;
+            line-height: 125px;
+            overflow: hidden;
+        }
+        .info li{
+            width: 100px;
+            height: 125px;
+            float: left;
+            margin-right: 40px;
+        }
+        #last{
+            margin-right: 0;
+        }
+        .info li div{
+            box-sizing: border-box;
+            width: 98px;
+            height: 98px;
+            border: 1px solid #e5e5e5;
+            text-align: center;
+            vertical-align: center;
+            padding-top: 8px;
+            position: relative;
+        }
+        .info li div img{
+            position: relative;
+            float: left;
+
+        }
+        .info li div .img1{
+            margin-top: 10px;
+            margin-left: 12px;
+            z-index: 1;
+            width: 71px;
+            height: 58px;
+        }
+        .info li div .img2{
+            width: 70px;
+            height: 57px;
+            margin-top: -58px;
+            margin-left: 12px;
+            z-index: 0;
+        }
+        .info li div .img1:hover{
+            z-index: -1;
+        }
+        .info li div .img2:hover{
+            z-index: 1;
+        }
+
+        .info li p{
+            margin-top: 7px;
+            height: 17px;
+            line-height: 17px;
+            text-align: center;
+            /*vertical-align: bottom;*/
+            font-size: 14px;
+        }
+
+        .hr2{
+            border: 1px dashed #e5e5e5;
+            margin-top: 20px;
+        }
+        #bottom{
+            height: 80px;
+            margin-top: 25px;
+        }
+        #bottom ul{
+            margin: 5px 2px;
+            height: 30px;
+            line-height: 30px;
+            position: relative;
+        }
+        #bottom ul li{
+            float: left;
+            width: 95px;
+            font-size: 14px;
+            text-align: center;
+        }
+        #bottom ul .li{
+            box-sizing: border-box;
+            height: 14px;
+            margin: 8px 0;
+            line-height: 14px;
+            border-right: 2px solid #a5a5a5;
+        }
+        #bottom ul .first-li{
+            height: 30px;
+            line-height: 30px;
+            background-color: #e7788d;
+            color: #fff;
+        }
+        #bottom ul .third-li{
+            color: #e7788d;
+        }
+        #bottom ul .five-li{
+            width: 116px;
+        }
+        #bottom ul .last-li{
+            margin-left: 15px;
+            width: 50px;
+        }
+
+    </style>
+    <script>
+        window.onload = function(){
+            var oUl = document.querySelector(".info");
+            for(var i=0;i<5;i++){
+                createEle(i);
+            }
+            //创建元素函数
+            function createEle(num){
+                var newLi = document.createElement("li");
+                if(num<4){
+                    newLi.innerHTML = '<div>\n' +
+                        '                    <img src="img/01.png" alt="" class="img1">\n' +
+                        '                    <img src="img/01a.png" alt="" class="img2">\n' +
+                        '                </div>\n' +
+                        '                <p>'+'<a href="javascript:;">'+dataInfo[num].info+'</a>'+'</p>';
+                }else{
+                    newLi.id = "last";
+                    newLi.innerHTML = '<div>\n' +
+                        '                    <img src="img/01.png" alt="" class="img1">\n' +
+                        '                    <img src="img/01a.png" alt="" class="img2">\n' +
+                        '                </div>\n' +
+                        '                <p>'+'<a href="javascript:;">'+dataInfo[num].info+'</a>'+'</p>';
+                    console.log(newLi);
+                }
+                oUl.appendChild(newLi);
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="out-box" class="clearfix">
+    <div id="in-box" class="clearfix">
+        <hr class="hr1">
+        <div class="serve">
+            <img src="img/g1.png" alt="">
+            <p>全球通业务+</p>
+        </div>
+        <ul class="info">
+           <!-- <li>
+                <div>
+                    <img src="img/01.png" alt="" class="img1">
+                    <img src="img/01a.png" alt="" class="img2">
+                </div>
+                <p>信息管家</p>
+            </li>
+            -->
+        </ul>
+        <hr class="hr2">
+        <div id="bottom">
+            <ul>
+                <li class="first-li">基本业务</li>
+                <li class="li"><a href="javascript:;">国际漫游</a></li>
+                <li class="li"><a href="javascript:;" class="third-li">国际长途</a></li>
+                <li class="li"><a href="javascript:;">国内长途</a></li>
+                <li class="five-li li"><a href="javascript:;">国内漫游</a></li>
+                <li class="li"><a href="javascript:;">本地通话</a></li>
+                <li class="last-li"><a href="javascript:;">更多>></a></li>
+            </ul>
+            <ul>
+                <li class="first-li">新业务</li>
+                <li class="li"><a href="javascript:;">手机阅读</a></li>
+                <li class="li"><a href="javascript:;">手机支付</a></li>
+                <li class="li"><a href="javascript:;">139邮箱</a></li>
+                <li class="li five-li"><a href="javascript:;">MO手机上网</a></li>
+                <li class="li"><a href="javascript:;">视频会议</a></li>
+                <li class="last-li"><a href="javascript:;">更多>></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

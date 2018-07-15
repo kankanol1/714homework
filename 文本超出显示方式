@@ -1,0 +1,17 @@
+1.overflow:hidden;
+2.text-overflow:ellipsis;
+3.-o-text-overflow:ellipsis;
+4.white-space:nowrap;
+5.width:100%;
+代码如下：
+.li { overflow:hidden;text-overflow:ellipsis; -o-text-overflow:ellipsis;white-space:nowrap;width:100%;}
+white-space：nowrap;表示文本不会换行，在同一行继续，知道遇到<br>标签为止；
+overflow：hidden;不显示超过对象尺寸的内容，就是把超出的部分隐藏了；
+text-overflow：ellipsis;当文本对象溢出是显示...，当然也可是设置属性为clip不显示点点点；
+-o-text-overflow: ellipsis针对Opera；而宽度的设定主要是针对IE6；
+该方法支持Internet Explorer, Safari, Chrome 和 Opera，但FF并不支持，不过可以通过Jquery来实现类似的效果。
+下载这个Jquery插件：jQuery ellipsis plugin
+调用方法：
+1.$(document).ready(function() {
+2. $('.ellipsis').ellipsis();
+3.}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+
+
+    margin：0 auto;     块级元素居中
+     必须是块级元素
+     必须设置宽高
+
+
+     浮动造成问题
+            父级高度塌陷===》子元素无法撑开父级的高度
+                造成布局混乱
+
+
+
+    浮动特征
+        1、块级元素可以同行显示
+        2、内联元素可以支持手动设置宽高
+        3、如果没有设置宽高，内容撑开宽高
+        4、脱离文档流
+        5、提升层级
+    清除浮动   清除浮动带来的影响
+        1、给父级设置高度
+            缺点：可扩展性不好
+        2、以浮制浮：给父级元素也设置浮动
+            1、margin：0 auto；失效
+            2、页面上所有元素都会受到影响
+        3、给父级设置 display：inline-block
+            margin: 0 auto;失效 属性居中失败
+
+        4、给浮动元素后面添加< br clear="all" /> 清除浮动
+           页面标签冗余  违背结构和样式分离的优化需求
+
+       5、给浮动元素之后添加 空的  <div style="clear:all;"></div> 标签
+            标签冗余，div的最小高度是19px，纠正后还有3px 偏差
+
+
+
+        */
+        .parent{
+            width: 500px;
+            border: 3px solid #4eff30;
+            margin: 0 auto;
+            overflow: auto;
+            /*overflow: hidden;*/
+
+            /*display: inline-block;*/
+
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            float: left;
+
+        }
+
+        .clearfix:after{
+            content: '.';
+            visibility: hidden;
+            height: 0;
+            display: block;
+            clear: both;
+
+        }
+        .clearfix{
+            *zoom: 1;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="parent ">
+    <div class="son"></div>
+</div>
+
+
+<!--
+
+
+
+
+-->
+</body>
+</html>

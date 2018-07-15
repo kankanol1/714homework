@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/data1.js"></script>
+    <style>
+
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #box{
+            box-sizing: border-box;
+            margin: 10px auto;
+            height: 607px;
+            width: 1000px;
+            background: url("img/bg2.png") no-repeat;
+            padding: 80px 130px;
+            text-align: center;
+            vertical-align: center;
+        }
+        #top{
+            height: 20px;
+            line-height: 20px;
+            position: relative;
+            font-size: 20px;
+            left: 20px;
+
+
+        }
+        #top img{
+            margin-right: 10px;
+            height: 20px;
+            float: left;
+        }
+        #top p{
+            float: left;
+        }
+        #middle{
+            height: 180px;
+            overflow: hidden;
+            width: 100%;
+            margin: 35px auto 40px auto;
+            position: relative;
+        }
+        #middle .mid{
+            height: 180px;
+            width: 350px;
+            font-size: 14px;
+            vertical-align: top;
+            float: left;
+            margin-left: 20px;
+        }
+        .p1{
+            font-size: 15px;
+            color: #57bad8;
+            margin-bottom: 10px;
+            vertical-align: top;
+            line-height: 15px;
+        }
+        .p2{
+            white-space:nowrap;
+            text-overflow:ellipsis;
+            overflow: hidden;
+        }
+        #middle .mid img{
+            float: left;
+            margin-right:20px ;
+            margin-bottom: 2px;
+        }
+        #middle .mid div{
+            line-height: 29px;
+            padding: 0 10px;
+            width: 170px;
+            float: left;
+            text-align: left;
+        }
+        #middle .mid input{
+            box-sizing: border-box;
+            height: 26px;
+            width: 66px;
+            outline: 2px solid #06b1da;
+            border: 2px solid #6bcfe7;
+            background-color: #06b1da;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        #middle .mid input:hover{
+            border: 0;
+            cursor: pointer;
+        }
+        #bottom{
+            width: 100%;
+            height: 180px;
+            font-size: 13px;
+            text-align: left;
+            padding: 0 20px;
+            position: relative;
+        }
+        #bottom div{
+            margin-right: 55px;
+            float: left;
+        }
+        #bottom p{
+            line-height: 30px;
+        }
+        .p3{
+            font-size: 15px;
+            color: #57bad8;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="top">
+        <img src="img/logo.png" alt="">
+        <p>本周主打</p>
+    </div>
+    <div id="middle">
+        <div class="mid">
+            <a href="javascript:;"><img src="img/book-1.jpg" alt=""></a>
+            <div>
+                <p class="p1">妙用性格</p>
+                <p>讲师：张勤</p>
+                <p>技术：共12集全</p>
+                <p>类型：生活</p>
+                <p class="p2" >性格无时无刻不在左右着你的思想，思维和做出的一些判断。</p>
+                <input type="button" value="购买">
+                <input type="button" value="预览" style="background-color: white">
+            </div>
+        </div>
+        <div class="mid">
+            <a href="javascript:;"><img src="img/book-01.jpg" alt=""> </a>
+            <div>
+                <p class="p1">妙用性格</p>
+                <p>讲师：二哈</p>
+                <p>技术：共300集全</p>
+                <p>类型：动物世界</p>
+                <p class="p2" >春暖花开，万物复苏，生机盎然，青山绿水。</p>
+                <input type="button" value="购买">
+                <input type="button" value="预览" style="background-color: white">
+            </div>
+        </div>
+    </div>
+
+    <div id="bottom">
+       <!-- <div>
+            <a href="javascript:;"><img src="img/book-2.jpg" alt=""> </a>
+            <p class="p3">妙用性格</p>
+            <p>讲师：张勤</p>
+            <p>技术：共12集全</p>
+        </div>-->
+    </div>
+</div>
+<script>
+    var oBottom = document.getElementById("bottom");
+    for(var i=0;i<4;i++){
+        createDiv(i);
+    }
+    function createDiv(num){
+        var newDiv = document.createElement("div");
+        newDiv.innerHTML = '<a href="javascript:;"><img src="'+data1[num].img+'" alt=""> </a>\n' +
+            '            <p class="p3">'+data1[num].p1+'</p>\n' +
+            '            <p>'+data1[num].p2+'</p>\n' +
+            '            <p>'+data1[num].p3+'</p>';
+        oBottom.appendChild(newDiv);
+    }
+</script>
+</body>
+</html>
